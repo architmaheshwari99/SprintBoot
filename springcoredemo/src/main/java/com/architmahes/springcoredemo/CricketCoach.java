@@ -1,4 +1,4 @@
-package com.utils;
+package com.architmahes.springcoredemo;
 
 import org.springframework.stereotype.Component;
 
