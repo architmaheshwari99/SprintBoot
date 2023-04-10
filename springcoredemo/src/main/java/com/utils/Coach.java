@@ -1,4 +1,4 @@
-package com.architmahes.springcoredemo;
+package com.utils;
 
 public interface Coach {
     public String getDailyWorkout();
