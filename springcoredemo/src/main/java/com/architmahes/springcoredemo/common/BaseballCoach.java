@@ -11,17 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class BaseballCoach implements Coach{
 
-    @PostConstruct
-    public void startUpStuff(){
-        System.out.println("DO start up stuff "+ getClass().getSimpleName());
-    }
-
-    @PreDestroy
-    public void cleanUpStuff(){
-        System.out.println("DO clean up stuff "+ getClass().getSimpleName());
-    }
-
-
     @Override
     public String getDailyWorkout() {
         return "Dribble the ball";
