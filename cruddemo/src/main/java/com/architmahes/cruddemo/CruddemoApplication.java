@@ -23,8 +23,19 @@ public class CruddemoApplication {
 //			createStudent(studentDAO);
 //			readStudent(studentDAO);
 //			readStudents(studentDAO);
-			findByLastName(studentDAO);
+//			findByLastName(studentDAO);
+			updateStudent(studentDAO);
 		};
+	}
+
+	private void updateStudent(StudentDAO studentDAO) {
+		Student st = studentDAO.findById(1);
+
+		st.setFirstName("Fatty");
+
+		studentDAO.update(st);
+
+		System.out.println(st);
 	}
 
 	private void findByLastName(StudentDAO studentDAO) {
