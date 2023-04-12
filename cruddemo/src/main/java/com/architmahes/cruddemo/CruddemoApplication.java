@@ -22,8 +22,16 @@ public class CruddemoApplication {
 		return runner -> {
 //			createStudent(studentDAO);
 //			readStudent(studentDAO);
-			readStudents(studentDAO);
+//			readStudents(studentDAO);
+			findByLastName(studentDAO);
 		};
+	}
+
+	private void findByLastName(StudentDAO studentDAO) {
+		List<Student> students = studentDAO.findByLastName("Duck");
+		for(Student st: students){
+			System.out.println(st);
+		}
 	}
 
 	private void readStudents(StudentDAO studentDAO) {
