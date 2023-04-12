@@ -7,6 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
+
 @SpringBootApplication
 public class CruddemoApplication {
 
@@ -17,8 +20,34 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner -> {
-			createStudent(studentDAO);
+//			createStudent(studentDAO);
+//			readStudent(studentDAO);
+			readStudents(studentDAO);
 		};
+	}
+
+	private void readStudents(StudentDAO studentDAO) {
+		List<Student> students = studentDAO.findAll();
+
+		for(Student st: students){
+			System.out.println(st);
+		}
+
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+
+		Student student = new Student("Daffy", "Duck", "duck@email.com");
+
+		studentDAO.save(student);
+
+		int id = student.getId();
+		System.out.println(id);
+
+		Student st = studentDAO.findById(id);
+
+		System.out.println(st);
+
 	}
 
 	private void createStudent(StudentDAO studentDAO) {
