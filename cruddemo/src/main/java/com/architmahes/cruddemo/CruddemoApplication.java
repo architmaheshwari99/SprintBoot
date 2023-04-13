@@ -20,7 +20,7 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner -> {
-//			createStudent(studentDAO);
+			createStudent(studentDAO);
 //			readStudent(studentDAO);
 //			readStudents(studentDAO);
 //			findByLastName(studentDAO);
@@ -31,8 +31,8 @@ public class CruddemoApplication {
 //
 //			readStudents(studentDAO);
 
-			int numRows = deleteAll(studentDAO);
-			System.out.println(numRows);
+//			int numRows = deleteAll(studentDAO);
+//			System.out.println(numRows);
 
 		};
 	}
