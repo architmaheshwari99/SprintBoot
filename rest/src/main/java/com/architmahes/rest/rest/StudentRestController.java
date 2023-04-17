@@ -2,10 +2,9 @@ package com.architmahes.rest.rest;
 
 import com.architmahes.rest.entity.Student;
 import jakarta.annotation.PostConstruct;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +29,23 @@ public class StudentRestController {
 
     @GetMapping("/students/{studentId}")
     public Student getStudents(@PathVariable int studentId){
+
+        if(studentId >= students.size() || studentId<0){
+            throw new StudentNotFoundException("student id not found: " + studentId);
+        }
+
         return students.get(studentId);
     }
+
+    // Exception handler to handle the exception
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exc){
+        StudentErrorResponse error = new StudentErrorResponse();
+        error.setStatus(HttpStatus.NOT_FOUND.value());
+        error.setMessage(exc.getMessage());
+        error.setTimestamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
 }
