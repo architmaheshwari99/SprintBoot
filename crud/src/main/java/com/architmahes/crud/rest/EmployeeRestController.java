@@ -2,6 +2,7 @@ package com.architmahes.crud.rest;
 
 import com.architmahes.crud.dao.EmployeeDAO;
 import com.architmahes.crud.entity.Employee;
+import com.architmahes.crud.service.EmployeeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,15 +13,15 @@ import java.util.List;
 @RequestMapping("/api")
 public class EmployeeRestController {
 
-    private EmployeeDAO employeeDAO;
+    private EmployeeService empService;
 
-    public EmployeeRestController(EmployeeDAO edao){
-        employeeDAO = edao;
+    public EmployeeRestController(EmployeeService empSvc){
+        empService = empSvc;
     }
 
     @GetMapping("/employees")
     public List<Employee> findAll() {
-        return employeeDAO.findAll();
+        return empService.findAll();
     }
 
 }
