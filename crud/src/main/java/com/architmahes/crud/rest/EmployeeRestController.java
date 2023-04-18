@@ -1,58 +1,58 @@
 package com.architmahes.crud.rest;
 
-import com.architmahes.crud.dao.EmployeeDAO;
+import com.architmahes.crud.dao.EmployeeRepository;
 import com.architmahes.crud.entity.Employee;
-import com.architmahes.crud.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeRestController {
 
-    private EmployeeService empService;
+    private EmployeeRepository employeeRepository;
 
-    public EmployeeRestController(EmployeeService empSvc){
-        empService = empSvc;
+    public EmployeeRestController(EmployeeRepository empSvc){
+        employeeRepository = empSvc;
     }
 
     @GetMapping("/employees")
     public List<Employee> findAll() {
-        return empService.findAll();
+        return employeeRepository.findAll();
     }
 
     @GetMapping("/employees/{id}")
     public Employee findById(@PathVariable int id){
-        Employee emp= empService.findById(id);
-        if(emp==null){
+        Optional<Employee> emp= employeeRepository.findById(id);
+        if(!emp.isPresent()){
             throw new RuntimeException("Employee Id not found "+ id);
         }
-        return emp;
+        return emp.get();
     }
 
     @PostMapping("/employees")
     public Employee addEmployee(@RequestBody Employee emp){
         emp.setId(0);
 
-        Employee e = empService.save(emp);
+        Employee e = employeeRepository.save(emp);
 
         return e;
     }
 
     @PutMapping("/employees")
     public Employee updateEmployee(@RequestBody Employee emp){
-        Employee e = empService.save(emp);
+        Employee e = employeeRepository.save(emp);
         return e;
     }
 
     @DeleteMapping("/employees/{id}")
     public void deleteEmployee(@PathVariable int id){
-        Employee e = empService.findById(id);
+        Optional<Employee> e = employeeRepository.findById(id);
         if(e==null){
             throw new RuntimeException("Employee not found " + id);
         }
-        empService.deleteById(id);
+        employeeRepository.deleteById(id);
 
     }
 
