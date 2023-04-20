@@ -27,7 +27,7 @@ public class HelloWorldConfiguration {
         return p;
     }
 
-    @Bean
+    @Bean(name="myaddress")
     public Address address(){
         return new Address("bgmbd", "modinagar", "ind");
     }
