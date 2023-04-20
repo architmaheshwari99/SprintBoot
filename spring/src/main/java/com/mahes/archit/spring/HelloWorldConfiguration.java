@@ -1,5 +1,6 @@
 package com.mahes.archit.spring;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -28,14 +29,24 @@ public class HelloWorldConfiguration {
 //    }
 
     @Bean(name="myaddress")
-    @Primary
+    @Qualifier("addressQualifier")
     public Address address(){
         return new Address("bgmbd", "modinagar", "ind");
     }
 
     @Bean
+    public Person person1(String name, int age, @Qualifier("addressQualifier") Address address){
+        return new Person(name, age, address);
+    }
+
+    @Bean
     @Primary
     public Person person2(){
+        return new Person(name(), age(), new Address("bgmbd", "modinagar", "ind"));
+    }
+
+    @Bean
+    public Person person3(){
         return new Person(name(), age(), new Address("bgmbd", "modinagar", "ind"));
     }
 
