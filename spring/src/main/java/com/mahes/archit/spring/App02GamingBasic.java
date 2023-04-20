@@ -5,6 +5,8 @@ import com.mahes.archit.spring.game.GameRunner;
 import com.mahes.archit.spring.game.PacManGame;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Arrays;
+
 public class App02GamingBasic {
 
     public static void main(String[] args) {
@@ -20,5 +22,10 @@ public class App02GamingBasic {
         System.out.println(context.getBean("myaddress"));
         System.out.println(context.getBean(Address.class));
         System.out.println(context.getBean("person2"));
+
+
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(
+                System.out::println
+        );
     }
 }
