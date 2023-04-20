@@ -18,5 +18,6 @@ public class App02GamingBasic {
         System.out.println(context.getBean("age"));
         System.out.println(context.getBean("person"));
         System.out.println(context.getBean("myaddress"));
+        System.out.println(context.getBean(Address.class));
     }
 }
