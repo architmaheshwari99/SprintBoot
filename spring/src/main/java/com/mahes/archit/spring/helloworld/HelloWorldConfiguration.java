@@ -1,4 +1,4 @@
-package com.mahes.archit.spring;
+package com.mahes.archit.spring.helloworld;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

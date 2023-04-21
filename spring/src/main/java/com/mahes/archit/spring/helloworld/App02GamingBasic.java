@@ -1,8 +1,5 @@
-package com.mahes.archit.spring;
+package com.mahes.archit.spring.helloworld;
 
-import com.mahes.archit.spring.game.ContraGame;
-import com.mahes.archit.spring.game.GameRunner;
-import com.mahes.archit.spring.game.PacManGame;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Arrays;
