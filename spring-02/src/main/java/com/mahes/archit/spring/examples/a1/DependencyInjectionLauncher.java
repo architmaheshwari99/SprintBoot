@@ -23,12 +23,8 @@ class YourBusinessClass{
     Dependency2 d2;
 
     @Autowired
-    public void setD1(Dependency1 d1) {
+    public YourBusinessClass(Dependency1 d1, Dependency2 d2) {
         this.d1 = d1;
-    }
-
-    @Autowired
-    public void setD2(Dependency2 d2) {
         this.d2 = d2;
     }
 
