@@ -2,6 +2,8 @@ package com.mahes.archit.spring.examples.a4.a0;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,37 +14,26 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Component
-class NormalClass{
-    private SomeDependency sd;
+//@Component
+@Named
+class BusinessService{
+    private DataService dSvc;
 
-    public NormalClass(SomeDependency sd) {
-        this.sd = sd;
+//    @Autowired
+    @Inject
+    public void setdSvc(DataService dSvc) {
+        this.dSvc = dSvc;
     }
 
-    @PostConstruct
-    public void initialize() {
-        sd.getReady();
-    }
-
-    @PreDestroy
-    public void cleanUp() {
-        System.out.println("Clean");
-
-        sd.clean();
+    public DataService getdSvc() {
+        return dSvc;
     }
 }
 
-@Component
-class SomeDependency {
+//@Component
+@Named
+class DataService {
 
-    public void getReady() {
-        System.out.println("Dependency Ready");
-    }
-
-    public void clean() {
-        System.out.println("Clean");
-    }
 }
 
 @Configuration
@@ -52,7 +43,7 @@ public class SimpleSpringContextLauncher {
     public static void main(String[] args) {
 
         var context = new AnnotationConfigApplicationContext(SimpleSpringContextLauncher.class);
-//        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
-        System.out.println(context.getBean(NormalClass.class));
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+        System.out.println(context.getBean(BusinessService.class));
     }
 }
