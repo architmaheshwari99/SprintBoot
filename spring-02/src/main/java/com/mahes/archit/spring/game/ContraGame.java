@@ -1,5 +1,8 @@
 package com.mahes.archit.spring.game;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ContraGame implements GamingConsole{
 
     public void up() {

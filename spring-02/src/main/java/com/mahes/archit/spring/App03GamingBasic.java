@@ -6,40 +6,18 @@ import com.mahes.archit.spring.game.GamingConsole;
 import com.mahes.archit.spring.game.PacManGame;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+
+
 @Configuration
-class GameConfiguration {
-
-    @Bean
-    public GamingConsole game() {
-        return new PacManGame();
-    }
-
-    @Bean
-    public GameRunner gameRunner(GamingConsole game) {
-        return new GameRunner(game);
-    }
-
-}
-
-
-
+@ComponentScan("com.mahes.archit.spring.game")
 public class App03GamingBasic {
 
     public static void main(String[] args) {
-//        var marioGame = new MarioGame();
-//        var contraGame = new ContraGame();
-//        var pacmanGame = new PacManGame(); // 1: Object Creation
-//
-//        // 2: Object creation + Wiring of dependencies
-////        Game is a dependency of GameRunner
-//        var gameRunner = new GameRunner(pacmanGame);
-//
-//
-//        gameRunner.run();
 
-        var context = new AnnotationConfigApplicationContext(GameConfiguration.class);
+        var context = new AnnotationConfigApplicationContext(App03GamingBasic.class);
         context.getBean(GamingConsole.class).up();
 
         context.getBean(GameRunner.class).run();
