@@ -1,5 +1,7 @@
 package com.mahes.archit.spring.examples.a4.a0;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,12 +14,35 @@ import java.util.Arrays;
 
 @Component
 class NormalClass{
+    private SomeDependency sd;
+
+    public NormalClass(SomeDependency sd) {
+        this.sd = sd;
+    }
+
+    @PostConstruct
+    public void initialize() {
+        sd.getReady();
+    }
+
+    @PreDestroy
+    public void cleanUp() {
+        System.out.println("Clean");
+
+        sd.clean();
+    }
 }
 
-@Scope(value= ConfigurableBeanFactory.SCOPE_SINGLETON)
 @Component
-class PrototypeClass{
+class SomeDependency {
 
+    public void getReady() {
+        System.out.println("Dependency Ready");
+    }
+
+    public void clean() {
+        System.out.println("Clean");
+    }
 }
 
 @Configuration
@@ -27,8 +52,7 @@ public class SimpleSpringContextLauncher {
     public static void main(String[] args) {
 
         var context = new AnnotationConfigApplicationContext(SimpleSpringContextLauncher.class);
-        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
-        System.out.println(context.getBean(PrototypeClass.class));
-        System.out.println(context.getBean(PrototypeClass.class));
+//        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+        System.out.println(context.getBean(NormalClass.class));
     }
 }
