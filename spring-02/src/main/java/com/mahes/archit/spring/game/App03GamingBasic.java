@@ -1,11 +1,6 @@
-package com.mahes.archit.spring;
+package com.mahes.archit.spring.game;
 
-import com.mahes.archit.spring.game.ContraGame;
-import com.mahes.archit.spring.game.GameRunner;
-import com.mahes.archit.spring.game.GamingConsole;
-import com.mahes.archit.spring.game.PacManGame;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
