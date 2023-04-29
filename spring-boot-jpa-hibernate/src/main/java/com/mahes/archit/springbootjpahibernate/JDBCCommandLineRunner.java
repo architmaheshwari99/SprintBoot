@@ -24,6 +24,7 @@ public class JDBCCommandLineRunner  implements CommandLineRunner {
         repo.deleteById(2l);
         var c=repo.findById(1l);
         System.out.println(c.toString());
+        System.out.println(repo.findByAuthor("Archit"));
     }
 
 }
