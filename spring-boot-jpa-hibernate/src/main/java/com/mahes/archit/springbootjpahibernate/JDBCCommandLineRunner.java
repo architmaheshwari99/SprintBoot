@@ -13,7 +13,8 @@ public class JDBCCommandLineRunner  implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception{
 
-        repo.insert();
+        repo.insert(new Course(1, "AWS", "Archit"));
+        repo.insert(new Course(2, "Azure", "Casper"));
     }
 
 }
