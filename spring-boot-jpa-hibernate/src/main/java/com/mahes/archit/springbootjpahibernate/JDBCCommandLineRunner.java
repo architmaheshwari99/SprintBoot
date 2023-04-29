@@ -10,16 +10,19 @@ public class JDBCCommandLineRunner  implements CommandLineRunner {
 //    @Autowired
 //    private JDBCRepository repo;
 
+//    @Autowired
+//    private JPARepository repo;
+
     @Autowired
-    private JPARepository repo;
+    private CourseJPA repo;
 
     @Override
     public void run(String... args) throws Exception{
 
-        repo.insert(new Course(1, "AWS", "Archit"));
-        repo.insert(new Course(2, "Azure", "Casper"));
-        repo.deleteById(2);
-        var c=repo.findById(1);
+        repo.save(new Course(1, "AWS", "Archit"));
+        repo.save(new Course(2, "Azure", "Casper"));
+        repo.deleteById(2l);
+        var c=repo.findById(1l);
         System.out.println(c.toString());
     }
 
