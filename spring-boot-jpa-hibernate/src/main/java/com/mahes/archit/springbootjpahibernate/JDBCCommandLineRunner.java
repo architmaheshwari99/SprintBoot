@@ -15,6 +15,9 @@ public class JDBCCommandLineRunner  implements CommandLineRunner {
 
         repo.insert(new Course(1, "AWS", "Archit"));
         repo.insert(new Course(2, "Azure", "Casper"));
+        repo.delete(2);
+        var c=repo.retrieve(1);
+        System.out.println(c.toString());
     }
 
 }
