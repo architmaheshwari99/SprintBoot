@@ -36,6 +36,7 @@ public class LoginController {
         if (authSvc.authenticate(name, password)){
             return "welcome";
         }
+        map.put("error", "Invalid creds");
 
         return "login";
     }
