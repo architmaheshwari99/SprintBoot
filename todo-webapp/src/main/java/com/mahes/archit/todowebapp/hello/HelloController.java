@@ -1,10 +1,8 @@
 package com.mahes.archit.todowebapp.hello;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloController {
@@ -23,7 +21,9 @@ public class HelloController {
 
 
     @RequestMapping("hello-jsp")
-    public String sayHelloHTMLJSP() {
+    public String sayHelloHTMLJSP(@RequestParam String name, ModelMap model) {
+        System.out.println(name);
+        model.put("name", name);
         return "sayHello";
     }
 }
