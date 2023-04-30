@@ -11,7 +11,7 @@
 <div class="container">
 <h1> Add TODO </h1>
 <form method="post">
-    Description: <input type="text" name="description">
+    Description: <input type="text" name="description" required=true>
     <input type="submit" class="btn btn-success">
 </form>
 </div>
