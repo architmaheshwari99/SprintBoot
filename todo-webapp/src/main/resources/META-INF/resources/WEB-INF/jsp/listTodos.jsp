@@ -17,15 +17,17 @@
                     <th>desc</th>
                     <th>date</th>
                     <th>done?</th>
+                    <th>Delete?</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${todos}" var="todo">
                     <tr>
-                        <th>${todo.id}</th>
-                        <th>${todo.description}</th>
-                        <th>${todo.targetDate}</th>
-                        <th>${todo.done}</th>
+                        <td>${todo.id}</td>
+                        <td>${todo.description}</td>
+                        <td>${todo.targetDate}</td>
+                        <td>${todo.done}</td>
+                        <td><a href="delete-todo?id=${todo.id}" class="btn btn-warning">DELETE</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
