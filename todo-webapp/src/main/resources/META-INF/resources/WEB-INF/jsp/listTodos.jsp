@@ -5,6 +5,8 @@
     <title>Welcome Page</title>
 </head>
 <body>
+<div> Welcome ${name} </div>
+
 <div> Welcome ${todos} </div>
 
 </body>
