@@ -7,5 +7,7 @@
 <body>
 <div> Welcome ${name}, ${password} </div>
 
+<a href="list-todos">Manage</a>
+
 </body>
 </html>
