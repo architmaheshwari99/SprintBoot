@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -21,4 +22,18 @@ public class TodoController {
         model.put("todos", todoService.findByUsername("in28minutes"));
         return "listTodos";
     }
+
+
+    @RequestMapping(value = "add-todo", method = RequestMethod.GET)
+    public String showNewTodoPage() {
+        return "todo";
+    }
+
+    @RequestMapping(value = "add-todo", method = RequestMethod.POST)
+    public String addTodos() {
+
+        return "redirect:list-todos";
+    }
+
+
 }
