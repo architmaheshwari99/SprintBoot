@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.time.LocalDate;
 
-@Controller
+//@Controller
 @SessionAttributes("name")
 public class TodoController {
 
