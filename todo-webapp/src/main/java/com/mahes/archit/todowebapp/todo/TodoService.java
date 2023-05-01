@@ -18,6 +18,7 @@ public class TodoService {
         todos.add(new Todo(todoCount++, "archit", "Learn AWS", LocalDate.now().plusYears(1), false));
         todos.add(new Todo(todoCount++, "archit", "Learn Azure", LocalDate.now().plusYears(2), true));
         todos.add(new Todo(todoCount++, "archit", "Learn GCP", LocalDate.now().plusYears(3), false));
+        todos.add(new Todo(todoCount++, "inshu", "Learn GCP", LocalDate.now().plusYears(3), false));
     }
 
     public List<Todo> findByUsername(String username) {
