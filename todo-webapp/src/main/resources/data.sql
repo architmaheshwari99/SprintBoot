@@ -1,2 +1,8 @@
 insert into todo (ID, USERNAME, DESCRIPTION, TARGET_DATE, DONE)
 values(10001, 'archit', 'AWS1212121212112', CURRENT_DATE(),true);
+
+insert into todo (ID, USERNAME, DESCRIPTION, TARGET_DATE, DONE)
+values(10002, 'archit', 'AS1212121212112', CURRENT_DATE(),true);
+
+insert into todo (ID, USERNAME, DESCRIPTION, TARGET_DATE, DONE)
+values(10003, 'inshu', 'WS1212121212112', CURRENT_DATE(),true);
