@@ -28,6 +28,11 @@ public class VersioningPersonController {
         return new PersonV2("archit", "mahes");
     }
 
+    @GetMapping(value = "/person/header", headers = "X-API-VERSION=1")
+    public PersonV2 getSecondVersionHeader() {
+        return new PersonV2("archit", "mahes");
+    }
+
 
 
 }
