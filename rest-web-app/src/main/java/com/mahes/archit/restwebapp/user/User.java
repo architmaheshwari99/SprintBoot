@@ -8,10 +8,10 @@ import java.time.LocalDate;
 public class User {
     private Integer id;
 
-    @Size(min=2)
+    @Size(min=2, message = "Name > 2 chars")
     private String name;
 
-    @Past
+    @Past(message = "DOB can't be in future")
     private LocalDate birthDate;
 
     public User(Integer id, String name, LocalDate birthDate) {
