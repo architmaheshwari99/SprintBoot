@@ -4,7 +4,7 @@ package com.mahes.archit.restwebapp.filtering;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties("field1")
+@JsonIgnoreProperties("field3")
 public class SomeBean {
 
     private String field1;
