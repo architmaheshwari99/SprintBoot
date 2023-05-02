@@ -1,5 +1,6 @@
 package com.mahes.archit.restwebapp.user;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +25,9 @@ public class UserResouce {
     }
 
     @PostMapping("/users")
-    public void createUser(@RequestBody User user){
+    public ResponseEntity<User> createUser(@RequestBody User user){
         service.save(user);
+
+        return ResponseEntity.created(null).build();
     }
 }
