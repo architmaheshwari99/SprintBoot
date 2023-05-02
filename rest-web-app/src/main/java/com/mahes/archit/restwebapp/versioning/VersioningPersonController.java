@@ -33,6 +33,11 @@ public class VersioningPersonController {
         return new PersonV2("archit", "mahes");
     }
 
+    @GetMapping(value = "/person/accept", produces = "application/vnd.company.app-v1+json")
+    public PersonV2 getFirstAcceptHeader() {
+        return new PersonV2("accept", "header");
+    }
+
 
 
 }
