@@ -1,8 +1,6 @@
 package com.mahes.archit.restwebapp.user;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +21,10 @@ public class UserResouce {
     @GetMapping("/users/{id}")
     public User retireveUser(@PathVariable int id){
         return service.findOne(id);
+    }
 
+    @PostMapping("/users")
+    public void createUser(@RequestBody User user){
+        service.save(user);
     }
 }
